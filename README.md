@@ -1,2 +1,3 @@
 # datonic.io
-Website for Datonic
+
+Website for Datonic.

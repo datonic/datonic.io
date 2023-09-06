@@ -6,37 +6,21 @@
     <meta charset="utf-8">
     <meta name="description" content="Datonic">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            max-width: 800px;
-            font-size: 48px;
-            margin: 0 auto;
-            background-color: #222;
-            color: #D3D0CB
-        }
-
-        a {
-            color: #E2C044;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
-
+    <link href="output.css" rel="stylesheet">
     <title>Datonic</title>
 </head>
 
-<body>
-    <h1>Datonic</h1>
-    <p>Data, and <em>everything</em> else.</p>
+<body class="bg-neutral-800 text-neutral-300 pt-8 mx-auto max-w-3xl">
 
-    <a href="/about" style="font-size: 32px;">About</a>
-    <a href="https://github.com/datonic" style="font-size: 32px; padding-left: 20px;">GitHub</a>
-    <a href="https://twitter.com/datonic_io" style="font-size: 32px; padding-left: 20px;">Twitter</a>
+    <h1 class="text-6xl font-bold my-6">Datonic</h1>
 
+    <p class="text-3xl py-4">Data, and <em>everything</em> else.</p>
+
+    <div class="text-3xl py-4 text-amber-300">
+        <a class="pr-6 hover:underline" href="/about">About</a>
+        <a class="pr-6 hover:underline" href="https://github.com/datonic">GitHub</a>
+        <a class="pr-6 hover:underline" href="https://twitter.com/datonic_io">Twitter</a>
+    </div>
 </body>
 
 </html>
