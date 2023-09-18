@@ -6,3 +6,6 @@ watch:
 
 build:
 	npx tailwindcss -o output.css --minify
+
+install:
+	npm install
