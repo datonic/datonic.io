@@ -1,11 +1,11 @@
-serve:
+serve: build
 	python3 -m http.server 8000
 
 watch:
-	npx tailwindcss -o output.css --minify --watch
+	npn run watch
 
 build:
-	npx tailwindcss -o output.css --minify
+	npm run build
 
 install:
 	npm install
