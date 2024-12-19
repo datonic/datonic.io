@@ -1,68 +1,79 @@
 ---
 import Layout from "../layouts/Base.astro";
+import { Image } from "astro:assets";
 ---
 
 <Layout
   title="Datonic"
   description="The best place for communities to collaborate on data. Create, curate, and share datasets with the world."
 >
-  <div class="flex justify-between items-center my-6">
-    <h1 class="text-6xl font-bold my-6">
-      <a class="text-amber-400" href="/">Datonic</a>
+  <div>
+    <br />
+    <Image src="/favicon.svg" alt="Datonic Logo" width={80} height={80} />
+    <h1 style="text-align: center;">
+      <a href="/" style="text-decoration: none;">Datonic</a>
     </h1>
-
-    <img src="/favicon.svg" alt="Datonic Logo" class="h-10 mr-12" />
   </div>
 
   <main>
-    <p class="text-3xl py-4">
-      The best place for communities to collaborate on data. Create, curate, and share datasets with the world.
+    <p>
+      The best place for communities to collaborate on data. Create, curate, and
+      share datasets with the world.
     </p>
   </main>
 
-  <div class="grid grid-cols-2 gap-4 py-12">
-    <div class="pb-4">
-      <h2 class="text-3xl">
-        <a class="text-amber-400 hover:underline" href="https://datadex.datonic.io">Datadex</a>
-      </h2>
-      <p class="text-2xl pt-3">
-        An open source, serverless, and local-first Data Platform pattern to help communities collaborate on Open Data.
-      </p>
-    </div>
-
-    <div class="pb-4">
-      <h2 class="text-3xl">
-        <a class="text-amber-400 hover:underline" href="https://github.com/datonic/hub">Hub</a>
-      </h2>
-      <p class="text-2xl pt-3">
-        The place to discuss how to do Open Data with open protocols running on open infrastructure.
-      </p>
-    </div>
-
-    <div class="pb-4">
-      <h2 class="text-3xl">
-        <a class="text-amber-400 hover:underline" href="/about">About</a>
-      </h2>
-      <p class="text-2xl pt-3">
-        How Datonic works, how you can collaborate, and what are our intentions and views on Open Data.
-      </p>
-    </div>
-
-    <div class="pb-4">
-      <h2 class="text-3xl">
-        <a class="text-amber-400 hover:underline" href="https://publish.obsidian.md/davidgasquez/Open+Data">Open Data Notes</a
-        >
-      </h2>
-      <p class="text-2xl pt-3">
-        All the raw notes on how Open data creates open knowledge and how can we improve the current open data ecosystem.
-      </p>
-    </div>
+  <div>
+    <h2>
+      <a href="/about">About</a>
+    </h2>
+    <p>
+      How Datonic works, how you can collaborate, and what are our intentions
+      and views on Open Data.
+    </p>
   </div>
 
-  <nav class="text-amber-400">
+  <div>
+    <h2>
+      <a href="https://datadex.datonic.io">Datadex</a>
+    </h2>
+    <p>
+      An open source, serverless, and local-first Data Platform pattern to help
+      communities collaborate on Open Data.
+    </p>
+  </div>
+
+  <div>
+    <h2>
+      <a href="https://github.com/datonic/hub">Hub</a>
+    </h2>
+    <p>
+      The place to discuss how to do Open Data with open protocols running on
+      open infrastructure.
+    </p>
+  </div>
+
+  <div>
+    <h2>
+      <a href="https://publish.obsidian.md/davidgasquez/Open+Data"
+        >Open Data Notes</a
+      >
+    </h2>
+    <p>
+      All the raw notes on how Open data creates open knowledge and how can we
+      improve the current open data ecosystem.
+    </p>
+  </div>
+
+  <hr />
+
+  <nav>
     <ul>
-      <a class="pr-6 hover:underline" href="https://github.com/datonic">GitHub</a>
-      <a class="pr-6 hover:underline" href="https://twitter.com/datonic_io">Twitter</a>
+      <li>
+        <a href="https://github.com/datonic">GitHub</a>
+      </li>
+      <li>
+        <a href="https://twitter.com/datonic_io">Twitter</a>
+      </li>
     </ul>
   </nav>
 </Layout>

@@ -1,39 +1,43 @@
 ---
 import Layout from "../layouts/Base.astro";
+import { Image } from "astro:assets";
 ---
 
 <Layout
   title="About Datonic"
   description="The best place for communities to collaborate on data. Create, curate, and share datasets with the world."
 >
-  <div class="flex justify-between items-center my-6">
-    <h1 class="text-6xl font-bold my-6">
-      <a class="text-amber-400" href="/">Datonic</a>
+  <div>
+    <br />
+    <Image src="/favicon.svg" alt="Datonic Logo" width={80} height={80} />
+    <h1 style="text-align: center;">
+      <a href="/" style="text-decoration: none;">Datonic</a>
     </h1>
-
-    <img src="/favicon.svg" alt="Datonic Logo" class="h-10 mr-12" />
   </div>
 
   <main>
-    <p class="text-2xl py-4">
+    <p>
       Datonic aims to be the best place for communities to collaborate on
       tabular data. It is not a new standard. It aims to build upon, coalesce,
       and make bridges.
     </p>
 
-    <p class="text-2xl py-4">
-      The goal is to bring Open Data to the level of Open Source by making Open
-      Data integrate with the modern data ecosystem.
+    <p>
+      The goal is to bring <a
+        href="https://publish.obsidian.md/davidgasquez/Open+Data"
+        >Open Data to the level of Open Source</a
+      >
+      by making Open Data integrate with the modern data ecosystem.
     </p>
 
-    <p class="text-2xl py-4">
+    <p>
       Let's move towards a world that produces open data with open source
       software using open protocols running on open and public infrastructure.
     </p>
 
-    <h3 class="text-4xl pt-8 text-amber-400">Ideals to Strive</h3>
+    <h2>Ideals to Strive</h2>
 
-    <ul class="text-2xl list-inside list-disc pl-6 py-4 leading-10">
+    <ul>
       <li>Community Focus</li>
       <li>Modularity</li>
       <li>Permissionless Ecosystem</li>
