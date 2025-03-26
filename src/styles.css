@@ -17,6 +17,7 @@
     font-style: normal;
     font-variant-numeric: tabular-nums lining-nums;
     font-size: 18px;
+    font-display: swap;
 }
 
 * {
