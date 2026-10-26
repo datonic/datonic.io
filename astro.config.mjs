@@ -1,6 +1,6 @@
 // @ts-check
-import { defineConfig, fontProviders } from 'astro/config';
-
+import { defineConfig, fontProviders } from "astro/config";
+import cloudflare from "@astrojs/cloudflare";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
@@ -10,17 +10,17 @@ export default defineConfig({
   build: {
     format: "file",
   },
-  experimental: {
-    clientPrerender: true,
-    fonts: [{
+  fonts: [
+    {
       provider: fontProviders.bunny(),
       name: "JetBrains Mono",
-      cssVariable: "--font-monospace"
-    }]
-  },
+      cssVariable: "--font-monospace",
+    },
+  ],
   prefetch: {
     prefetchAll: true,
   },
-
+  adapter: cloudflare({ imageService: "passthrough" }),
+  session: false,
   integrations: [sitemap()],
 });

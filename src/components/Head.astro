@@ -19,13 +19,12 @@ const {
 
 const siteUrl = Astro.site ?? new URL("https://datonic.io");
 
-// Pages are built as `about.html` but served as `/about`. Match the sitemap,
-// which writes the home page without a trailing slash.
+// Pages are built as `about.html` but served as `/about`.
 const path = Astro.url.pathname
     .replace(/\.html$/, "")
-    .replace(/\/index$/, "")
-    .replace(/\/$/, "");
-const canonicalUrl = siteUrl.origin + path;
+    .replace(/\/index$/, "/")
+    .replace(/(.)\/$/, "$1");
+const canonicalUrl = new URL(path || "/", siteUrl).toString();
 const imageUrl = new URL(image, siteUrl).toString();
 
 const structuredData = JSON.stringify({

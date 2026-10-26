@@ -4,20 +4,22 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev --host 0.0.0.0",
-    "start": "astro dev",
-    "build": "astro check && astro build && wrangler build --experimental-new-config --experimental-cf-build-output",
+    "build": "astro check && cf build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "npm run build && cf deploy --prebuilt"
+    "deploy": "cf deploy"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.3.1",
-    "astro": "^5.7.10"
+    "@astrojs/cloudflare": "^15.0.0-beta.3",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.4.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
     "cf": "^1.0.0-beta.21",
-    "typescript": "^5.9.3",
-    "wrangler": "^4.152.0"
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22.23.4"
   }
 }
