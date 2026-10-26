@@ -1,22 +1,45 @@
 ---
 import Head from "../components/Head.astro";
+import "../styles.css";
+
 interface Props {
   title: string;
   description: string;
+  noindex?: boolean;
 }
 
-const { title } = Astro.props;
-const { description } = Astro.props;
-
-import "../styles.css";
+const { title, description, noindex = false } = Astro.props;
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "/index.html";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <Head title={title} description={description} author="Datonic" />
+    <Head
+      title={title}
+      description={description}
+      author="Datonic"
+      noindex={noindex}
+    />
   </head>
   <body>
-    <slot />
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="masthead">
+      <a href="/" class="wordmark" aria-current={isHome ? "page" : undefined}>
+        <img src="/favicon.svg" alt="" width="56" height="56" />
+        <span>Datonic</span>
+      </a>
+    </header>
+    <main id="content">
+      <slot />
+    </main>
+    <footer>
+      <nav aria-label="Elsewhere">
+        <ul>
+          <li><a href="https://github.com/datonic">GitHub</a></li>
+          <li><a href="https://twitter.com/datonic_io">Twitter</a></li>
+        </ul>
+      </nav>
+    </footer>
   </body>
 </html>

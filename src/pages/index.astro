@@ -1,79 +1,53 @@
 ---
 import Layout from "../layouts/Base.astro";
-import { Image } from "astro:assets";
+
+const projects = [
+  {
+    name: "About",
+    href: "/about",
+    description:
+      "How Datonic works, how you can collaborate, and what we believe about Open Data.",
+  },
+  {
+    name: "Datadex",
+    href: "https://datadex.datonic.io",
+    description:
+      "An open source, serverless, and local-first Data Platform pattern to help communities collaborate on Open Data.",
+  },
+  {
+    name: "Hub",
+    href: "https://github.com/datonic/hub",
+    description:
+      "The place to discuss how to do Open Data with open protocols running on open infrastructure.",
+  },
+  {
+    name: "Open Data notes",
+    href: "https://davidgasquez.com/handbook/open-data",
+    description:
+      "Raw notes on how Open Data creates open knowledge and how we can improve the current ecosystem.",
+  },
+];
 ---
 
 <Layout
   title="Datonic"
   description="The best place for communities to collaborate on data. Create, curate, and share datasets with the world."
 >
-  <div>
-    <br />
-    <Image src="/favicon.svg" alt="Datonic Logo" width={80} height={80} />
-    <h1 style="text-align: center;">
-      <a href="/" style="text-decoration: none;">Datonic</a>
-    </h1>
-  </div>
+  <h1 class="lede">
+    The best place for communities to collaborate on data. Create, curate, and
+    share datasets with the world.
+  </h1>
 
-  <main>
-    <p>
-      The best place for communities to collaborate on data. Create, curate, and
-      share datasets with the world.
-    </p>
-  </main>
-
-  <div>
-    <h2>
-      <a href="/about">About</a>
-    </h2>
-    <p>
-      How Datonic works, how you can collaborate, and what are our intentions
-      and views on Open Data.
-    </p>
-  </div>
-
-  <div>
-    <h2>
-      <a href="https://datadex.datonic.io">Datadex</a>
-    </h2>
-    <p>
-      An open source, serverless, and local-first Data Platform pattern to help
-      communities collaborate on Open Data.
-    </p>
-  </div>
-
-  <div>
-    <h2>
-      <a href="https://github.com/datonic/hub">Hub</a>
-    </h2>
-    <p>
-      The place to discuss how to do Open Data with open protocols running on
-      open infrastructure.
-    </p>
-  </div>
-
-  <div>
-    <h2>
-      <a href="https://davidgasquez.com/handbook/open-data"
-        >Open Data Notes</a
-      >
-    </h2>
-    <p>
-      All the raw notes on how Open data creates open knowledge and how can we
-      improve the current open data ecosystem.
-    </p>
-  </div>
-
-  <hr />
-
-  <nav>
-    <ul>
-      <li>
-        <a href="https://github.com/datonic">GitHub</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/datonic_io">Twitter</a>
-      </li>
-    </ul>
-  </nav>
+  <ul class="entries">
+    {
+      projects.map((project) => (
+        <li>
+          <h2>
+            <a href={project.href}>{project.name}</a>
+          </h2>
+          <p>{project.description}</p>
+        </li>
+      ))
+    }
+  </ul>
 </Layout>

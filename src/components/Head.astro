@@ -6,7 +6,7 @@ interface Props {
     author: string;
     description: string;
     image?: string;
-    canonicalUrl?: string;
+    noindex?: boolean;
 }
 
 const {
@@ -14,75 +14,54 @@ const {
     author,
     description,
     image = "/banner.png",
-    canonicalUrl = Astro.url.pathname,
+    noindex = false,
 } = Astro.props;
 
-const siteUrl = import.meta.env.SITE || "https://datonic.io";
-const fullUrl = new URL(canonicalUrl, siteUrl).toString();
+const siteUrl = Astro.site ?? new URL("https://datonic.io");
+
+// Pages are built as `about.html` but served as `/about`. Match the sitemap,
+// which writes the home page without a trailing slash.
+const path = Astro.url.pathname
+    .replace(/\.html$/, "")
+    .replace(/\/index$/, "")
+    .replace(/\/$/, "");
+const canonicalUrl = siteUrl.origin + path;
 const imageUrl = new URL(image, siteUrl).toString();
 
-// Generate JSON-LD structured data
 const structuredData = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: title,
-    description: description,
-    url: fullUrl,
+    name: "Datonic",
+    description,
+    url: siteUrl.toString(),
+    logo: new URL("/favicon.svg", siteUrl).toString(),
+    sameAs: ["https://github.com/datonic", "https://twitter.com/datonic_io"],
 });
 ---
 
-<!-- Immediately set theme on page load before any rendering -->
-<script is:inline>
-    const savedTheme = localStorage.getItem("theme") || "light";
-    if (savedTheme === "dark") document.documentElement.classList.add("dark");
-</script>
-
-<!-- Meta Tags -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light dark" />
 <title>{title}</title>
 <meta name="author" content={author} />
 <meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex" />}
 
-<!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-<!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />
+{!noindex && <link rel="canonical" href={canonicalUrl} />}
 
-<!-- Canonical URL -->
-<link rel="canonical" href={fullUrl} />
-
-<!-- Open Graph / Social Media -->
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:url" content={fullUrl} />
+<meta property="og:url" content={canonicalUrl} />
 <meta property="og:image" content={imageUrl} />
 <meta property="og:type" content="website" />
 
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={imageUrl} />
 
-<!-- JSON-LD structured data -->
 <script is:inline type="application/ld+json" set:html={structuredData} />
 
-<script>
-    const toggle = document.getElementById("theme-toggle");
-    const html = document.documentElement;
-
-    // Set initial theme based on localStorage or default to light
-    const savedTheme = localStorage.getItem("theme") || "light";
-    if (savedTheme === "dark") html.classList.add("dark");
-
-    // Toggle theme on click
-    toggle?.addEventListener("click", () => {
-        const isDark = html.classList.toggle("dark");
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-    });
-</script>
-
-<!-- Fonts -->
 <Font cssVariable="--font-monospace" preload />
