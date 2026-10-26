@@ -13,7 +13,7 @@ npm run dev
 ## 📦 Build and deploy
 
 ```bash
-npm run build   # astro check && cf build
+npm run build   # cf build
 npm run deploy  # cf deploy
 ```
 

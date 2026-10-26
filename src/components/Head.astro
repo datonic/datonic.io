@@ -26,16 +26,6 @@ const path = Astro.url.pathname
     .replace(/(.)\/$/, "$1");
 const canonicalUrl = new URL(path || "/", siteUrl).toString();
 const imageUrl = new URL(image, siteUrl).toString();
-
-const structuredData = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Datonic",
-    description,
-    url: siteUrl.toString(),
-    logo: new URL("/favicon.svg", siteUrl).toString(),
-    sameAs: ["https://github.com/datonic", "https://twitter.com/datonic_io"],
-});
 ---
 
 <meta charset="UTF-8" />
@@ -47,7 +37,6 @@ const structuredData = JSON.stringify({
 {noindex && <meta name="robots" content="noindex" />}
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="sitemap" href="/sitemap-index.xml" />
 {!noindex && <link rel="canonical" href={canonicalUrl} />}
 
 <meta property="og:title" content={title} />
@@ -57,10 +46,5 @@ const structuredData = JSON.stringify({
 <meta property="og:type" content="website" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content={title} />
-<meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={imageUrl} />
-
-<script is:inline type="application/ld+json" set:html={structuredData} />
 
 <Font cssVariable="--font-monospace" preload />

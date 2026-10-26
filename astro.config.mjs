@@ -5,7 +5,6 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://datonic.io",
-  compressHTML: true,
   trailingSlash: "never",
   build: {
     format: "file",
@@ -17,9 +16,6 @@ export default defineConfig({
       cssVariable: "--font-monospace",
     },
   ],
-  prefetch: {
-    prefetchAll: true,
-  },
   adapter: cloudflare({ imageService: "passthrough" }),
   session: false,
   integrations: [sitemap()],
